@@ -14,6 +14,6 @@ fn get_async_block() -> (fn(i32)-> Pin<Box<dyn Future<Output=()>>>){
 
 #[test]
 fn call() {
-    let f = get_async_block();
+    let f: fn(i32)-> Pin<Box<dyn Future<Output=()>>> = get_async_block();
     println!("{:?}",async_std::task::block_on(f(10)));
 }
